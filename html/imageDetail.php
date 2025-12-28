@@ -15,7 +15,8 @@
     <div class="detailImage">
       <img src="../images/<?php echo $data['image']['file_name'] ?>" alt="投稿画像">
       <div class="detailImagButton">
-        <button class="updateButton">更新</button>
+<!--         // 更新ボタンを押すと、postImageForm.phpに遷移し、画像の更新ができるようにする -->
+        <button class="updateButton" onclick="location.href='./postImageForm.php?id=<?php echo $_GET['id']; ?>';">更新</button>
         <button class="deleteButton" onclick="location.href='../deleteImage.php?id=<?php echo $_GET['id']; ?>';">削除</button>
       </div>
       <button onclick="location.href='./index.php';">戻る</button>

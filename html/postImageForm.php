@@ -10,7 +10,11 @@
 <body>
   <?php include('./header.php') ?>
   <div class="submitImage">
-    <form action="../postImage.php" method="post" enctype="multipart/form-data">
+    <?php if(isset($_GET['id'])) { ?>
+      <form action="../updateImage.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
+    <?php } else { ?>
+      <form action="../postImage.php" method="post" enctype="multipart/form-data">
+    <?php } ?>
       <img id="preview">
       <input type="file" name="file" onchange="previewFile(this);">
       <button type="submit" name="submit">送信</button>

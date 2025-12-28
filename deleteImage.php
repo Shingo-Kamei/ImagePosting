@@ -22,6 +22,7 @@ if(!empty($imageId)) {
 
     if ($getImageName && !empty($getImageName['file_name'])) {
 
+        // $getImageName['file_name']で画像名を取得し、unlink関数で画像ファイルを削除
         $deleteImage = unlink($targetDirectory . $getImageName['file_name']);
 
         if($deleteImage) {
