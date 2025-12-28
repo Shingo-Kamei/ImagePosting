@@ -15,6 +15,13 @@ if(strpos($uri, 'imageDetail.php') !== false) {
     // fetchメソッドは、結果セットから1行を取得するためのメソッド(1つだけ取り出す)
     // fetchメソッドは、取得したデータを配列として返す
     $data['image'] = $sth->fetch();
+
+    $sql2 = "SELECT * FROM comments WHERE image_id = " . $imageId . " ORDER BY create_date DESC";
+
+    $sth = $db->prepare($sql2);
+    $sth->execute();
+    $data['comments'] = $sth->fetchAll();
+    $countComment = count($data['comments']);
 } else {
 
     // DB接続情報を読み込み

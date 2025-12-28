@@ -53,16 +53,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($fileName)) {
         //  ここで画像名を取得している
         $getImageName = $sth->fetch();
 
-        $deleteImage = unlink($targetDirectory . $getImageName['file_name']);
+        if ($getImageName && !empty($getImageName['file_name'])) {
+
+            // unlink の結果を変数に入れる
+            $deleteImage = unlink($targetDirectory . $getImageName['file_name']);
+
+        } else {
+
+            // レコードが無い or file_name が空の場合
+            $deleteImage = false;
+        }
 
         if($deleteImage) {
             $uploadImageForServer = move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
 
-            if($uploadImageForServer) {
-                $update = $db->query("UPDATE images SET file_name = '" . $fileName . "' WHERE id = " . $imageId);
+        if($uploadImageForServer) {
+            $update = $db->prepare("UPDATE images SET file_name = :file WHERE id = :id");
+            $update->bindValue(':file', $fileName, PDO::PARAM_STR);
+            $update->bindValue(':id', $imageId, PDO::PARAM_INT);
+            $update->execute();
 
-                header('Location: ./html/index.php', true, 303);
-                exit();
+            header('Location: ./html/index.php', true, 303);
+            exit();
             }
         }
     }

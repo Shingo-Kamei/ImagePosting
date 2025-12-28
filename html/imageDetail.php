@@ -24,26 +24,12 @@
     <div class="comment">
       <p class="commentTitle">コメント</p>
       <ul>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
-        <li>コメントコメントコメント</li>
+        <?php for($i=0; $i < $countComment; $i++) { ?>
+          <li><?php echo $data['comments'][$i]['comment']; ?></li>
+        <?php } ?>
       </ul>
       <div class="submitComment">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="../postComment.php?image_id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
           <textarea name="comment" id="comment" cols="40" rows="10"></textarea>
           <button type="submit" name="submit">送信</button>
         </form>
