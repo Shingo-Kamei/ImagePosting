@@ -16,17 +16,13 @@
   // header.phpにはヘッダー部分のコードが書かれている
     -->
   <?php include('../dbConfig.php') ?>
+  <?php include('../getDatas.php') ?>
   <?php include('./header.php') ?>
   <div class="imageList">
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-    <a href="./imageDetail.php"><img src="../気球.jpeg" alt="投稿画像"></a>
-</div>
+    <!-- // ($data as $image)は、$data配列の中身を1つずつ取り出して、$image変数に代入するという意味 -->
+    <?php foreach($data as $image) { ?>
+      <a href="./imageDetail.php"><img src="../images/<?php echo $image['file_name']; ?>" alt="投稿画像"></a>
+    <?php } ?>
+  </div>
 </body>
 </html>
