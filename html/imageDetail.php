@@ -8,10 +8,12 @@
   <title>画像投稿アプリ</title>
 </head>
 <body>
+  <?php include('../dbConfig.php') ?>
+  <?php include('../getDatas.php') ?>
   <?php include('./header.php') ?>
   <div class="detailImageBox">
     <div class="detailImage">
-      <img src="../気球.jpeg" alt="投稿画像">
+      <img src="../images/<?php echo $data['image']['file_name'] ?>" alt="投稿画像">
       <div class="detailImagButton">
         <button class="updateButton">更新</button>
         <button class="deleteButton">削除</button>

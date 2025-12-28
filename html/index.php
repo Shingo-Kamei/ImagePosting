@@ -21,7 +21,10 @@
   <div class="imageList">
     <!-- // ($data as $image)は、$data配列の中身を1つずつ取り出して、$image変数に代入するという意味 -->
     <?php foreach($data as $image) { ?>
-      <a href="./imageDetail.php"><img src="../images/<?php echo $image['file_name']; ?>" alt="投稿画像"></a>
+<!--       // 画像をクリックすると、imageDetail.phpに遷移し、画像の詳細情報が表示されるようにする
+      // 画像のリンク先は、imageDetail.php?id=画像のIDとなるようにする
+      // imageDetail.php?idの「?」以降はクエリパラメータと呼ばれ、画像のIDを渡すために使用される -->
+      <a href="./imageDetail.php?id=<?php echo $image['id']; ?>"><img src="../images/<?php echo $image['file_name']; ?>" alt="投稿画像"></a>
     <?php } ?>
   </div>
 </body>
